@@ -5,4 +5,5 @@ dependencies:
 
 test:
   override:
-    - make uat
+    - python -m SimpleHTTPServer 9000
+    - npm run uat
