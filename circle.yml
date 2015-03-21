@@ -1,0 +1,8 @@
+dependencies:
+  override:
+    - npm install
+    - ./node_modules/bower/bin/bower install
+
+test:
+  override:
+    - make uat
