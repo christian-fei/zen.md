@@ -3,3 +3,5 @@ zenmd.sublime-workspace
 node_modules
 selenium.jar
 reports
+chrome.webdriver
+selenium-debug.log
