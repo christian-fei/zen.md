@@ -1,0 +1,73 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="zen-editor">
+  <template>
+    <style>
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .container {
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: flex-start;
+      align-items: stretch;
+
+      min-height: 100%;
+      height: 100%;
+    }
+
+    .raw, .rendered {
+      display: block;
+      flex: 1 100%;
+      height: 100%;
+      padding: .25em;
+      font-family: Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    .raw {
+      -webkit-appearance: none;
+      outline: none;
+      resize: none;
+      border: none;
+      word-wrap: normal;
+
+      border-right: 1px solid black;
+    }
+    .rendered {
+      white-space: pre;
+    }
+    </style>
+
+    <div class="container" layout horizontal center>
+        <textarea class="raw" value="{{raw}}"></textarea>
+        <div class="rendered">{{rendered}}</div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      ready: function(){
+        this.rendered = renderMd(this.raw)
+      },
+      raw: restore('raw'),
+      rawChanged: function(oldV, raw){
+        this.rendered = renderMd(raw)
+        localStorage.raw = raw
+      }
+    })
+
+    function renderMd(raw){
+      return raw
+    }
+    function restore(key){
+      return localStorage[key] || ''
+    }
+  </script>
+</polymer-element>
