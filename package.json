@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/christian-fei/zen.md/issues"
   },
-  "homepage": "https://github.com/christian-fei/zen.md"
+  "homepage": "https://github.com/christian-fei/zen.md",
+  "devDependencies": {
+    "nightwatch": "^0.5.36"
+  }
 }
