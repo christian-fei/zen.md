@@ -121,7 +121,7 @@
           this.zenMode = window.innerWidth > 800 && !this.zenMode ? '' : 'zen-mode'
         }.bind(this), 50, true)
       },
-      raw: restore('raw'),
+      raw: restoreRaw(),
       rawChanged: function(){
         this.$.rendered.innerHTML = renderMd(this.raw || '')
         localStorage.raw = this.raw
@@ -138,6 +138,9 @@
     function restore(key){
       return localStorage[key] || ''
     }
+    function restoreRaw(){
+      return restore('raw') || getDefaultRaw()
+    }
     function debounce(func, wait, immediate) {
       var timeout;
       return function() {
@@ -151,6 +154,34 @@
         timeout = setTimeout(later, wait)
         if (callNow) func.apply(context, args)
       }
+    }
+    function getDefaultRaw(){
+      return ['# Heading 1\n',
+              '## Heading 2\n',
+              '### Heading 3\n',
+              '#### Heading 4\n',
+              '##### Heading 5\n',
+              '###### Heading 6\n',
+              '\n',
+              '---\n',
+              '\n',
+              '[zen.md](http://christian.fei.ninja/zen.md/)\n',
+              '\n',
+              '---\n',
+              '\n',
+              '**bold**\n',
+              '\n',
+              '*italic*\n',
+              '\n',
+              '~~strike through~~\n',
+              '\n',
+              '---\n',
+              '\n',
+              '- 1\n',
+              '- 2\n',
+              '  - 2.1\n',
+              '    - 2.1.1\n',
+              '- 3\n'].join('')
     }
   </script>
 </polymer-element>
