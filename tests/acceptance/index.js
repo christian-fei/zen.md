@@ -4,13 +4,18 @@ module.exports = {
       .url("http://localhost:9000?test")
       .waitForElementVisible('zen-editor', 1000)
   },
-  "shows example text if no text to restore is found in the localStorage": function(browser){
+
+  "As a user\
+  I want to see an example of markdown text\
+  so I can play with the editor right away": function(browser){
     browser
       .pause(100)
       .assert.containsText('#rendered', 'Heading 1\nHeading 2')
       .end()
   },
-  "renders markdown on the split window" : function(browser){
+
+  "As a user\
+  I want to see the rendered markdown as html": function(browser){
     browser
       .clearValue('textarea')
       .setValue('textarea', '# marked\n##down')
@@ -18,7 +23,10 @@ module.exports = {
       .assert.containsText('#rendered', 'marked\ndown')
       .end()
   },
-  "persists and restores the written text": function(browser){
+
+  "As a user\
+  I want to be able to continue editing the text\
+  That I was writing during the session before": function(browser){
     browser
       .clearValue('textarea')
       .setValue('textarea', '# marked\n##down')
