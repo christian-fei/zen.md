@@ -66,20 +66,12 @@
             font-family: Helvetica, sans-serif;
             font-size: 18px;
             font-weight: normal;
-            overflow: scroll;
+            overflow-y: scroll;
           }
 
 
           #rendered {
             font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-          }
-
-          .zen-mode #rendered {
-            flex: none;
-            -webkit-flex: none;
-            display: none;
-            width: 0;
-            overflow: hidden;
           }
 
           .raw {
@@ -89,14 +81,35 @@
             resize: none;
             border: none;
             word-wrap: normal;
+
+            border-right: 1px solid rgb(231, 231, 231);
           }
+
+          .zen-mode .editor-pane {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
+
+            .zen-mode .raw {
+              min-width: 60%;
+              border-right: none;
+            }
+
+            .zen-mode #rendered {
+              flex: 0;
+              -webkit-flex: 0;
+              width: 0;
+              opacity: 0;
+            }
+
 
           paper-button {
             float: right;
           }
     </style>
 
-    <div class="container">
+    <div class="container {{zenMode}}">
       <header>
         <paper-button raised on-tap="{{toggleZenMode}}" tabindex="0">
           Z
@@ -121,6 +134,7 @@
       },
       toggleZenMode: function(event, boh, element){
         console.log( arguments )
+        this.zenMode = this.zenMode ? '' : 'zen-mode'
       }
     })
 
