@@ -25,6 +25,10 @@
         box-sizing: border-box;
       }
 
+      img {
+        max-width: 100%;
+      }
+
       .container {
         display: -webkit-box;
         display: -moz-box;
@@ -54,7 +58,7 @@
             flex: 1 auto;
             -webkit-flex: 1 auto;
             flex: 100%;
-            padding: .25em;
+            padding: .35em;
             font-family: Helvetica, sans-serif;
             font-size: 18px;
             font-weight: normal;
@@ -156,7 +160,9 @@
       }
     }
     function getDefaultRaw(){
-      return ['# Heading 1\n',
+      return ['[![img](http://www.intersafeenergies.com/wp-content/uploads/2013/12/street-light4.jpg)](http://www.intersafeenergies.com/wp-content/uploads/2013/12/street-light4.jpg)\n',
+              '---\n',
+              '# Heading 1\n',
               '## Heading 2\n',
               '### Heading 3\n',
               '#### Heading 4\n',
