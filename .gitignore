@@ -5,3 +5,6 @@ selenium.jar
 reports
 chrome.webdriver
 selenium-debug.log
+!bower_components/webcomponentsjs/webcomponents.min.js
+!bower_components/marked/marked.min.js
+!bower_components/polymer/polymer.html
