@@ -1,4 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/core-icon/core-icon.html">
 
 <polymer-element name="zen-editor">
   <template>
@@ -30,82 +32,75 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
+
       .container {
-        display:flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
         flex-direction: column;
-        justify-content: space-between;
-        align-content: flex-start;
-        align-items: stretch;
-
+        height: 100%;
         min-height: 100%;
-        height: 100%;
       }
 
-      .zen-mode-button {
-        display: block;
-        position: fixed;
-        top: .5em;
-        right: .5em;
-        width: 2em;
-        height: 2em;
-        background: lightgrey;
-        z-index: 10000;
-      }
-
-      .raw, #rendered {
-        display: block;
-        flex: 1 100%;
-        -webkit-flex: 1 100%;
-        height: 100%;
-        padding: .25em;
-        font-family: Helvetica, sans-serif;
-        font-size: 18px;
-        font-weight: normal;
-        overflow: scroll;
-      }
-
-
-      #rendered {
-        font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-      }
-
-      .zen-mode #rendered {
-        flex: none;
-        -webkit-flex: none;
-        display: none;
-        width: 0;
-        overflow: hidden;
-      }
-
-      .raw {
-        font-family: monospace;
-        -webkit-appearance: none;
-        outline: none;
-        resize: none;
-        border: none;
-        word-wrap: normal;
-
-        border-bottom: 1px solid rgb(228, 228, 228);
-      }
-
-      @media all and (min-width: 1000px){
-        .container{
-          flex-direction: row;
+        header {
+          flex: 1 0 auto;
+          padding: .25em;
+          border-bottom: 1px solid rgb(231, 231, 231);
         }
-        .raw {
-          border-bottom: none;
-          border-right: 1px solid rgb(228, 228, 228);
-        }
-      }
 
+        .editor-pane {
+          display: flex;
+        }
+
+          .raw, #rendered {
+            display: block;
+            flex: 1 auto;
+            -webkit-flex: 1 auto;
+            flex: 100%;
+            padding: .25em;
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            overflow: scroll;
+          }
+
+
+          #rendered {
+            font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+          }
+
+          .zen-mode #rendered {
+            flex: none;
+            -webkit-flex: none;
+            display: none;
+            width: 0;
+            overflow: hidden;
+          }
+
+          .raw {
+            font-family: monospace;
+            -webkit-appearance: none;
+            outline: none;
+            resize: none;
+            border: none;
+            word-wrap: normal;
+          }
     </style>
 
-    <div class="zen-mode-button" on-click="{{toggleZenMode}}"></div>
     <div class="container">
-      <textarea autofocus class="raw" value="{{raw}}"></textarea>
-      <div id="rendered"></div>
+      <header>
+        <paper-button raised on-tap="{{toggleZenMode}}" tabindex="0">
+          Z
+        </paper-button>
+      </header>
+      <div class="editor-pane">
+        <textarea autofocus class="raw" value="{{raw}}"></textarea>
+        <div id="rendered"></div>
+      </div>
     </div>
-
   </template>
 
   <script>
