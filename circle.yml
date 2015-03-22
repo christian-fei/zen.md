@@ -6,3 +6,9 @@ dependencies:
 test:
   override:
     - npm run uat
+
+deployment:
+  gh-pages:
+    branch: master
+    commands:
+      - sh scripts/sync-gh-pages.sh
