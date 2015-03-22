@@ -12,7 +12,7 @@ fi
 python -m SimpleHTTPServer 9000 &
 SERVER_PID=$!
 
-while curl --silent http://localhost:9000/src
+while curl --silent http://localhost:9000
 do
   echo "."
   sleep 0.1
