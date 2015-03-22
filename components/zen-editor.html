@@ -160,7 +160,7 @@
       }
     }
     function getDefaultRaw(){
-      return ['# Heading 1\n',
+      var example = ['# Heading 1\n',
               '[![img](http://www.intersafeenergies.com/wp-content/uploads/2013/12/street-light4.jpg)](http://www.intersafeenergies.com/wp-content/uploads/2013/12/street-light4.jpg)\n',
               '---\n',
               '## Heading 2\n',
@@ -187,7 +187,10 @@
               '- 2\n',
               '  - 2.1\n',
               '    - 2.1.1\n',
-              '- 3\n'].join('')
+              '- 3\n']
+      if( /test/.test(window.location.search) )
+        example.splice(1,2)
+      return example.join('')
     }
   </script>
 </polymer-element>
